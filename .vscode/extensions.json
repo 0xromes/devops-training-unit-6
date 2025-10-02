@@ -1,0 +1,32 @@
+{
+  "recommendations": [
+    "charliermarsh.ruff",
+
+    "aaron-bond.better-comments",
+    "arcanis.vscode-zipfs",
+    "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+    "bradlc.vscode-tailwindcss",
+    "byCedric.vscode-expo",
+    "csstools.postcss",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "hashicorp.terraform",
+    "mikestead.dotenv",
+    "ms-python.black-formatter",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-toolsai.jupyter",
+    "njpwerner.autodocstring",
+    "oouo-diogo-perdigao.docthis",
+    "bradlc.vscode-tailwindcss",
+    "eamodio.gitlens",
+    "mikestead.dotenv",
+    "ms-python.python",
+    "sourcery.sourcery",
+    "VisualStudioExptTeam.intellicode-api-usage-examples",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "digitalbrainstem.javascript-ejs-support",
+    "j69.ejs-beautify"
+  ]
+}

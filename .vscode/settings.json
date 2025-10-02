@@ -1,0 +1,106 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss",
+    "NOTES.txt": "helm",
+    "*.yaml.gotmpl": "helm",
+    "*.yml.gotmpl": "helm"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "eslint.workingDirectories": [
+    {
+      "pattern": "./web/*/"
+    },
+    {
+      "pattern": "./packages/*/"
+    }
+  ],
+  "tailwindCSS.experimental.configFile": "./lib/tailwind-config-yrbk/tailwind.config.ts",
+  "isort.args": ["--profile=black", "--settings-path", "${workspaceFolder}/pyproject.toml"],
+  "python.languageServer": "Pylance",
+  "python.autoComplete.extraPaths": ["${workspaceFolder}/api"],
+  "python.testing.pytestArgs": ["${workspaceFolder}/api", "-n", "auto", "--no-testmon"],
+  "python.analysis.extraPaths": ["${workspaceFolder}/api"],
+  "eslint.lintTask.enable": true,
+  "typescript.check.npmIsInstalled": true,
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.rulers": [120],
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[javascript]": {
+    "editor.codeActionsOnSave": ["source.fixAll", "source.organizeImports"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": ["source.fixAll", "source.organizeImports"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.codeActionsOnSave": ["source.fixAll"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[typescript]": {
+    "editor.codeActionsOnSave": ["source.fixAll", "source.organizeImports"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": ["source.fixAll", "source.organizeImports"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[helm]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "prettier.withNodeModules": true,
+  "files.eol": "\n",
+  "prettier.useEditorConfig": false,
+  "prettier.configPath": ".prettierrc",
+  "prettier.endOfLine": "lf",
+  "black-formatter.args": ["--line-length", "120", "--fast"],
+  "pylint.args": [
+    "--rcfile",
+    "${workspaceFolder}/pyproject.toml",
+    "--load-plugins",
+    "pylint_django",
+    "--django-settings-module=hr_portal.settings.local"
+  ],
+  "ruff.lint.args": ["--config=${workspaceFolder}/pyproject.toml"],
+  "emmet.includeLanguages": {
+    "ejs": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "j69.ejs-beautify"
+  },
+  "yaml.customTags": ["!reference sequence"]
+}

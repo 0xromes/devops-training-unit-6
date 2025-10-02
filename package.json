@@ -1,0 +1,19 @@
+{
+  "name": "unit-6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "pnpm -r run test",
+    "lint": "pnpm -r run lint",
+    "build": "pnpm -r run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.1",
+  "dependencies": {
+    "gatsby": "^5.15.0",
+    "gatsby-plugin-typescript": "^5.15.0"
+  }
+}

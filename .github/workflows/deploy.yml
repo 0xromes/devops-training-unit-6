@@ -1,0 +1,116 @@
+name: Gatsby CI/CD with SAST
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # -------------------------
+  # Test + SAST Stage
+  # -------------------------
+  test:
+    name: Test, Lint & SAST
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.11.0 --activate
+
+      # Install dependencies
+      - name: Install dependencies
+        run: pnpm install -r --frozen-lockfile
+
+      # Run lint/test
+      - name: Run lint
+        run: pnpm run lint
+      - name: Run tests
+        run: pnpm run test
+
+  # -------------------------
+  # Build Stage
+  # -------------------------
+  build:
+    name: Build Gatsby
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+        
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.11.0 --activate
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: gatsby
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            unit-6/public
+            unit-6/.cache
+          key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-build-
+
+      - name: Install dependencies
+        run: pnpm install -r --frozen-lockfile
+
+      - name: Build with Gatsby
+        env:
+          PREFIX_PATHS: 'true'
+        run: pnpm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./unit-6/public
+
+  # -------------------------
+  # Deploy Stage
+  # -------------------------
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
